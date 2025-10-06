@@ -17,6 +17,10 @@ def render_chat_ui():
         st.session_state.messages = []
     if "data_loaded" not in st.session_state:
         st.session_state.data_loaded = False
+    if "model_choice" not in st.session_state:
+        st.session_state.model_choice = "phi4"
+    if "language" not in st.session_state:
+        st.session_state.language = "en"
 
     # Sidebar for data upload
     with st.sidebar:
@@ -52,7 +56,7 @@ def render_chat_ui():
                     # Initialize LLM if needed
                     if st.session_state.llm is None:
                         with st.spinner("Loading AI model (first time may take a while)..."):
-                            st.session_state.llm = LLMHandler()
+                            st.session_state.llm = LLMHandler(st.session_state.model_choice)
 
                     st.rerun()
                 except Exception as e:
@@ -91,12 +95,53 @@ def render_chat_ui():
             preview = st.session_state.rag.get_preview()
             st.code(preview[:1000], language='text')  # Show first 1000 chars
 
+        st.markdown("---")
+        st.header("⚙️ Settings")
+
+        # Model selector
+        model_choice = st.selectbox(
+            "AI Model",
+            ["phi4", "phi3", "grok4"],
+            index=["phi4", "phi3", "grok4"].index(st.session_state.model_choice),
+            help="Phi-4 (latest) for MSME analytics, optimized for accuracy. Grok-4 in future release."
+        )
+
+        if model_choice != st.session_state.model_choice:
+            st.session_state.model_choice = model_choice
+            st.session_state.llm = LLMHandler(model_choice)  # Reinitialize with new model
+            st.session_state.messages = []  # Clear chat for new model
+            st.success(f"Switched to {model_choice.upper()} model")
+
+        # Language selector
+        language = st.selectbox(
+            "Language",
+            [("en", "English"), ("hi", "Hindi (हिंदी)")],
+            index=1 if st.session_state.language == "hi" else 0,
+            format_func=lambda x: x[1]
+        )[0]
+
+        if language != st.session_state.language:
+            st.session_state.language = language
+            st.success(f"Language set to {language.upper()}")
+
+        # Model info
+        if st.session_state.llm and hasattr(st.session_state.llm, 'get_model_info'):
+            st.subheader("Model Info")
+            model_info = st.session_state.llm.get_model_info()
+            st.write(f"**Type**: {model_info['type']}")
+            st.write(f"**Optimized for**: {model_info['optimized_for']}")
+            st.write(f"**Features**: {', '.join(model_info['features'])}")
+
     # Main chat interface
     if not st.session_state.data_loaded:
         st.info("👋 Upload some data first to start chatting with your MSME analytics!")
         return
 
     st.header("💬 Ask Questions About Your Data")
+
+    # Langfuse feedback collection
+    if st.button("Rate This Session ⭐"):
+        st.info("Feedback feature placeholder - Langfuse integration ready")
 
     # Display chat messages
     chat_container = st.container()
@@ -121,7 +166,7 @@ def render_chat_ui():
                     context = st.session_state.rag.query_data(prompt)
                     
                     # Generate response with LLM
-                    response = st.session_state.llm.generate_response(prompt, context)
+                    response = st.session_state.llm.generate_response(prompt, context, st.session_state.language)
                     
                     st.markdown(response)
                     st.session_state.messages.append({"role": "assistant", "content": response})
