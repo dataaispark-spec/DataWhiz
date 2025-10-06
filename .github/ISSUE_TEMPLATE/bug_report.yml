@@ -1,0 +1,110 @@
+name: Bug Report
+description: Report a bug or issue with DataWhiz MSME Analytics
+title: "[BUG] <brief description>"
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! This helps us improve DataWhiz.
+        Please fill out the required fields below.
+
+  - type: input
+    id: version
+    attributes:
+      label: DataWhiz Version
+      description: Which version of DataWhiz are you using?
+      placeholder: "e.g., 1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the application is affected?
+      options:
+        - UI/UX
+        - Data Processing
+        - AI/ML Features
+        - Authentication
+        - Performance
+        - Deployment
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical (application unusable)
+        - High (major functionality broken)
+        - Medium (impacts usability)
+        - Low (minor inconvenience)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clear description of the bug
+      placeholder: "Describe what happened and what should have happened"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to reproduce the issue
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide:
+      placeholder: |
+        - OS: [e.g., macOS Monterey 12.6]
+        - Browser: [e.g., Chrome 105.0]
+        - Python version: [e.g., 3.9.13]
+        - Deployment method: [local/Streamlit Cloud/Vercel]
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information
+      description: Any other relevant information, screenshots, logs, etc.
+      placeholder: "Add any other context or information about the problem"
+    validations:
+      required: false

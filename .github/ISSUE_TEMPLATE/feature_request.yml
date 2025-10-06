@@ -1,0 +1,131 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for DataWhiz MSME Analytics
+title: "[FEATURE] <brief description>"
+labels: ["enhancement", "feature-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature! This helps us make DataWhiz better.
+        Please provide detailed information about your feature request.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: Brief description of the proposed feature
+      placeholder: "What would you like to add or improve?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem/Need
+      description: What problem does this feature solve?
+      placeholder: "What's currently broken or missing?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution
+      placeholder: "How should this feature work?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative approaches?
+      placeholder: "List any alternative solutions you've thought about"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - Nice to have
+        - Should have
+        - Must have
+        - Critical business need
+    validations:
+      required: true
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Target Audience
+      description: Who would use this feature?
+      options:
+        - Business owners/managers
+        - Operations teams
+        - Data analysts
+        - Developers
+        - All users
+        - Enterprise users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this would be to implement?
+      options:
+        - Low (small changes, few days)
+        - Medium (significant changes, 1-2 weeks)
+        - High (major architecture changes, weeks+)
+        - Very High (research/breakthrough features)
+        - Unsure
+    validations:
+      required: false
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: What are the benefits of this feature?
+      placeholder: |
+        - User experience improvements
+        - Business value
+        - Technical advantages
+        - Market differentiation
+
+  - type: textarea
+    id: drawbacks
+    attributes:
+      label: Potential Drawbacks
+      description: Are there any downsides or risks?
+      placeholder: "Consider performance, complexity, cost, etc."
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Anything else you'd like to add?
+      placeholder: "Screenshots, examples, references, etc."
+
+  - type: checkboxes
+    id: acceptance_criteria
+    attributes:
+      label: Feature Acceptance Criteria
+      description: What must be true for this feature to be considered complete?
+      options:
+        - type: checkbox
+          label: Feature is fully documented
+        - type: checkbox
+          label: Feature includes unit tests
+        - type: checkbox
+          label: Feature works across all platforms (desktop/mobile/web)
+        - type: checkbox
+          label: Feature is backward compatible
+        - type: checkbox
+          label: Feature includes error handling
+        - type: checkbox
+          label: Feature is accessible (WCAG compliance)
