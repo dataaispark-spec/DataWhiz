@@ -19,11 +19,13 @@ Live Demo: [https://datawhizai.streamlit.app/](https://datawhizai.streamlit.app/
 - **📊 Data Preview**: Real-time visual preview of uploaded datasets
 - **⚙️ Multi-Model Support**: Switch between different AI models (Phi4, Phi3, Grok4)
 
-### Technical Highlights
-- **Lightweight & Cost-Effective**: Uses efficient LLMs (3.8B-14B parameters)
-- **Offline-Capable Design**: Minimal internet dependency with local processing
-- **Multi-Platform**: Works on desktops, mobiles, and edge devices
-- **Privacy-First**: Data processed locally (no cloud storage required)
+### 🚀 Revolutionary Edge AI Technology
+- **📱 Phone-as-GPU Processor**: Harness your smartphone's power to process entire business datasets locally
+- **🧠 Tiny LLMs for Full Analytics**: Complete business intelligence using compact AI models (3B-7B parameters) that run offline
+- **🔒 Privacy-Focused Architecture**: 100% private data processing - your business sensitive information never leaves your device
+- **🤖 AI Assistant with Agents**: Intelligent workflows and custom agents tailored for MSME business operations
+- **⚡ Offline-First Design**: No internet required for core analytics functions
+- **💰 Zero Cloud Costs**: All processing happens locally on your existing devices
 
 ## 📋 Requirements Validation
 
@@ -32,11 +34,17 @@ Based on comprehensive market research and technical analysis:
 ### 🎯 Product Mission
 Democratizing data analytics for MSMEs by enabling natural language queries without technical expertise.
 
+### 🤖 Unique Selling Points
+- **📱 Your Phone is the GPU**: Transform your smartphone into a powerful analytics engine - no expensive hardware needed
+- **🧠 Tiny LLMs, Massive Intelligence**: Complete business analytics with efficient AI models (3B-7B parameters) that run entirely offline
+- **🔐 Ultimate Privacy**: 100% private analytics - your business data never leaves your device, fully compliant with privacy regulations
+- **🚀 AI Agent Workflows**: Intelligent custom assistants that adapt to your specific business needs and automate routine analytics tasks
+
 ### 💡 Value Proposition
-- Avoid expensive BI tools while getting instant insights
-- Scale from spreadsheets to enterprise analytics seamlessly
-- 70-90% productivity gains for small business operations
-- Disruptive affordability vs. Snowflake/Zoho ($10-50/user/month vs. hundreds)
+- **Data Sovereignty**: Your business data stays completely private and secure
+- **Zero Infrastructure Costs**: Leverage existing phone/desktop computing power
+- **Offline Functionality**: Work without internet for maximum productivity
+- **Custom AI Workflows**: AI agents learn your business patterns and provide tailored insights
 
 ### 🌍 Market Fit (Especially in Developing Markets)
 - MSMEs drive 40-60% GDP in emerging economies (India, Brazil, Indonesia)
@@ -180,6 +188,6 @@ This project is open-source under the MIT License. Feel free to use, modify, and
 
 ---
 
-**Product Vision**: "ChatGPT for SME spreadsheets" - Democratizing business intelligence for millions of small businesses worldwide through conversational AI.
+**Product Vision**: "Your phone becomes your business analyst" - Private, powerful AI analytics using your device's processing power with Tiny LLMs for complete data intelligence. MSMEs get enterprise-grade insights with maximum privacy and zero infrastructure costs through intelligent AI agents and custom workflows.
 
 *Auto-updated from DataWhiz development - https://datawhizai.streamlit.app/*
