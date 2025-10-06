@@ -1,4 +1,4 @@
-# 📊 MSME Analytics MVP (DataWhiz)
+# 📊 DataWhiz - Privacy Focused AI Business Analytics Assistant
 
 Transform your business data into actionable insights with AI-powered natural language Q&A! This is a minimum viable product for MSME analytics using Streamlit, LangChain, and Retrieval-Augmented Generation (RAG).
 
