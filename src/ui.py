@@ -32,33 +32,55 @@ def render_chat_ui():
                                  placeholder="https://drive.google.com/file/...")
 
         if st.button("Load Data", type="primary"):
+            from src.data.connector import DataConnector
+            connector = DataConnector()
+
             if uploaded_file:
                 file_details = {"filename": uploaded_file.name, "filesize": uploaded_file.size}
                 st.write(file_details)
-                
+
                 # Save uploaded file temporarily
                 file_path = f"temp_{uploaded_file.name}"
                 with open(file_path, "wb") as f:
                     f.write(uploaded_file.getvalue())
-                
+
                 try:
                     result = st.session_state.rag.load_csv(file_path)
                     st.success(result)
                     st.session_state.data_loaded = True
-                    
+
                     # Initialize LLM if needed
                     if st.session_state.llm is None:
                         with st.spinner("Loading AI model (first time may take a while)..."):
                             st.session_state.llm = LLMHandler()
-                    
+
                     st.rerun()
                 except Exception as e:
                     st.error(f"Error loading data: {str(e)}")
-            
+                finally:
+                    # Clean up temp file
+                    if os.path.exists(file_path):
+                        os.remove(file_path)
+
             elif drive_link:
                 try:
-                    # Extract file ID and download (placeholder - would need gdown)
-                    st.info("Google Drive integration placeholder - use direct upload for now")
+                    with st.spinner("Downloading from Google Drive..."):
+                        df, message = connector.load_csv_from_drive(drive_link)
+
+                    if message == "Successfully loaded from Google Drive":
+                        result = st.session_state.rag.load_csv(df=df)
+                        st.success(f"From Google Drive: {result}")
+                        st.session_state.data_loaded = True
+
+                        # Initialize LLM if needed
+                        if st.session_state.llm is None:
+                            with st.spinner("Loading AI model..."):
+                                st.session_state.llm = LLMHandler()
+
+                        st.rerun()
+                    else:
+                        st.error(message)
+
                 except Exception as e:
                     st.error(f"Error loading from Drive: {str(e)}")
             else:
