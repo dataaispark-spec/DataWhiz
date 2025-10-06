@@ -1,29 +1,114 @@
 import streamlit as st
+import pandas as pd
+from src.core.llm import LLMHandler
+from src.core.rag import RAGHandler
 
 def render_chat_ui():
-    st.title("MSME Analytics Chat")
-    
-    # Initialize chat history
+    st.set_page_config(page_title="MSME Analytics", page_icon="📊", layout="wide")
+    st.title("📊 MSME Analytics MVP")
+    st.markdown("Turn your Google Drive CSVs/Excel files into insights with natural language Q&A")
+
+    # Initialize session state
+    if "rag" not in st.session_state:
+        st.session_state.rag = RAGHandler()
+    if "llm" not in st.session_state:
+        st.session_state.llm = None  # Initialize later
     if "messages" not in st.session_state:
         st.session_state.messages = []
+    if "data_loaded" not in st.session_state:
+        st.session_state.data_loaded = False
 
-    # Display chat messages from history on app rerun
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # React to user input
-    if prompt := st.chat_input("Ask about MSME analytics..."):
-        # Display user message in chat message container
-        st.chat_message("user").markdown(prompt)
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-
-        # Generate assistant response (placeholder)
-        response = f"I received your question: '{prompt}'. This is a placeholder response in the MSME Analytics MVP."
+    # Sidebar for data upload
+    with st.sidebar:
+        st.header("📁 Data Upload")
         
-        # Display assistant response in chat message container
+        # File uploader
+        uploaded_file = st.file_uploader("Upload CSV or Excel file (<100MB)", 
+                                       type=['csv', 'xlsx', 'xls'],
+                                       help="Upload from Google Drive or local file")
+        
+        # Google Drive link
+        drive_link = st.text_input("Or paste Google Drive sharing link", 
+                                 placeholder="https://drive.google.com/file/...")
+
+        if st.button("Load Data", type="primary"):
+            if uploaded_file:
+                file_details = {"filename": uploaded_file.name, "filesize": uploaded_file.size}
+                st.write(file_details)
+                
+                # Save uploaded file temporarily
+                file_path = f"temp_{uploaded_file.name}"
+                with open(file_path, "wb") as f:
+                    f.write(uploaded_file.getvalue())
+                
+                try:
+                    result = st.session_state.rag.load_csv(file_path)
+                    st.success(result)
+                    st.session_state.data_loaded = True
+                    
+                    # Initialize LLM if needed
+                    if st.session_state.llm is None:
+                        with st.spinner("Loading AI model (first time may take a while)..."):
+                            st.session_state.llm = LLMHandler()
+                    
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Error loading data: {str(e)}")
+            
+            elif drive_link:
+                try:
+                    # Extract file ID and download (placeholder - would need gdown)
+                    st.info("Google Drive integration placeholder - use direct upload for now")
+                except Exception as e:
+                    st.error(f"Error loading from Drive: {str(e)}")
+            else:
+                st.warning("Please upload a file or provide a Drive link")
+
+        if st.session_state.data_loaded:
+            st.subheader("Data Preview")
+            preview = st.session_state.rag.get_preview()
+            st.code(preview[:1000], language='text')  # Show first 1000 chars
+
+    # Main chat interface
+    if not st.session_state.data_loaded:
+        st.info("👋 Upload some data first to start chatting with your MSME analytics!")
+        return
+
+    st.header("💬 Ask Questions About Your Data")
+
+    # Display chat messages
+    chat_container = st.container()
+    with chat_container:
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+    # Chat input
+    if prompt := st.chat_input("Ask anything about your data... (e.g., 'What are the sales trends?', 'Show me top performers')"):
+        # Add user message
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        # Generate AI response
         with st.chat_message("assistant"):
-            st.markdown(response)
-        # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": response})
+            with st.spinner("Thinking..."):
+                try:
+                    # Get context from RAG
+                    context = st.session_state.rag.query_data(prompt)
+                    
+                    # Generate response with LLM
+                    response = st.session_state.llm.generate_response(prompt, context)
+                    
+                    st.markdown(response)
+                    st.session_state.messages.append({"role": "assistant", "content": response})
+                    
+                except Exception as e:
+                    error_msg = f"Sorry, I encountered an error: {str(e)}. Please try again."
+                    st.error(error_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
+
+    # Voice input placeholder (would need JavaScript)
+    st.markdown("---")
+    st.markdown("🎤 Voice input and Hindi language support coming in future updates!")
