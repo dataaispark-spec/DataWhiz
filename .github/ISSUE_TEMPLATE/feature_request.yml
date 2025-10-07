@@ -1,13 +1,13 @@
 name: Feature Request
-description: Suggest a new feature or enhancement for DataWhiz MSME Analytics
-title: "[FEATURE] <brief description>"
+description: Suggest a new feature or enhancement for PiRhoAI MSME Analytics
+title: "[FEATURE] <brief description]"
 labels: ["enhancement", "feature-request"]
 assignees: []
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for suggesting a feature! This helps us make DataWhiz better.
+        Thank you for suggesting a feature! This helps us make PiRhoAI better.
         Please provide detailed information about your feature request.
 
   - type: textarea

@@ -1,14 +1,14 @@
-# 📊 DataWhiz - Privacy Focused AI Business Analytics Assistant
+# 📊 PiRhoAI - Privacy Focused AI Business Analytics Assistant
 
 Transform your business data into actionable insights with AI-powered natural language Q&A! This is a minimum viable product for MSME analytics using Streamlit, LangChain, and Retrieval-Augmented Generation (RAG).
 
-Live Demo: [https://datawhizai.streamlit.app/](https://datawhizai.streamlit.app/)
+Live Demo: [https://pirhoai.streamlit.app/](https://pirhoai.streamlit.app/)
 
 ## 📸 Screenshots
 
-![DataWhiz Analytics Dashboard](screenshots/dashboard-screenshot.png)
+![PiRhoAI Analytics Dashboard](screenshots/dashboard-screenshot.png)
 
-*Note: Add actual screenshots from https://datawhizai.streamlit.app/ to the screenshots/ directory*
+*Note: Add actual screenshots from https://pirhoai.streamlit.app/ to the screenshots/ directory*
 
 ## 🚀 Features
 
@@ -190,4 +190,4 @@ This project is open-source under the MIT License. Feel free to use, modify, and
 
 **Product Vision**: "Your phone becomes your business analyst" - Private, powerful AI analytics using your device's processing power with Tiny LLMs for complete data intelligence. MSMEs get enterprise-grade insights with maximum privacy and zero infrastructure costs through intelligent AI agents and custom workflows.
 
-*Auto-updated from DataWhiz development - https://datawhizai.streamlit.app/*
+*Auto-updated from PiRhoAI development - https://pirhoai.streamlit.app/*

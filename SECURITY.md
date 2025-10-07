@@ -2,7 +2,7 @@
 
 ## 🔒 Security Overview
 
-We at DataWhiz take security seriously. As an MSME analytics platform handling business data, we prioritize the protection of user data and system integrity.
+We at PiRhoAI take security seriously. As an MSME analytics platform handling business data, we prioritize the protection of user data and system integrity.
 
 ## 🚨 Supported Versions
 
@@ -15,11 +15,11 @@ We actively support and patch security vulnerabilities in the following versions
 
 ## 📢 Reporting a Vulnerability
 
-If you discover a security vulnerability in DataWhiz, please help us by reporting it responsibly.
+If you discover a security vulnerability in PiRhoAI, please help us by reporting it responsibly.
 
 **Please do NOT report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
 
-Instead, please email our security team directly at [security@datawhiz.ai](mailto:security@datawhiz.ai)
+Instead, please email our security team directly at [security@pirhoai.ai](mailto:security@pirhoai.ai)
 
 Include the following information:
 - A clear description of the vulnerability
@@ -70,12 +70,12 @@ Your data is processed locally when possible and never stored on our servers bey
 
 ## 📞 Contact Information
 
-- Security Issues: [security@datawhiz.ai](mailto:security@datawhiz.ai)
-- General Inquiries: [support@datawhiz.ai](mailto:support@datawhiz.ai)
+- Security Issues: [security@pirhoai.ai](mailto:security@pirhoai.ai)
+- General Inquiries: [support@pirhoai.ai](mailto:support@pirhoai.ai)
 - PGP Key: Available upon request
 
 ## 🙏 Bug Bounty Program
 
 We appreciate security researchers who help keep our platform safe. Our bug bounty program rewards significant security findings. Details available upon request.
 
-Thank you for helping keep DataWhiz secure! 🔐
+Thank you for helping keep PiRhoAI secure! 🔐

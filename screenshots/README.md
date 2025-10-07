@@ -1,14 +1,14 @@
 # Screenshots
 
-This folder contains screenshots of the DataWhiz MSME Analytics MVP.
+This folder contains screenshots of the PiRhoAI MSME Analytics MVP.
 
 ## Available Screenshots
 
 - `dashboard-screenshot.png`: Main dashboard showing analytics interface and product briefing
-- References from live demo: https://datawhizai.streamlit.app/
+- References from live demo: https://pirhoai.streamlit.app/
 
 To add screenshots:
-1. Take screenshots of the deployed app: https://datawhizai.streamlit.app/
+1. Take screenshots of the deployed app: https://pirhoai.streamlit.app/
 2. Save in this directory as PNG, JPG, or GIF format
 3. Update the image references in README.md
 

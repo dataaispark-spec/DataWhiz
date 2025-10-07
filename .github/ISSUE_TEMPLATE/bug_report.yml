@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report a bug or issue with DataWhiz MSME Analytics
+description: Report a bug or issue with PiRhoAI MSME Analytics
 title: "[BUG] <brief description>"
 labels: ["bug", "triage"]
 assignees: []
@@ -7,14 +7,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for reporting a bug! This helps us improve DataWhiz.
+        Thank you for reporting a bug! This helps us improve PiRhoAI.
         Please fill out the required fields below.
 
   - type: input
     id: version
     attributes:
-      label: DataWhiz Version
-      description: Which version of DataWhiz are you using?
+      label: PiRhoAI Version
+      description: Which version of PiRhoAI are you using?
       placeholder: "e.g., 1.0.0"
     validations:
       required: true

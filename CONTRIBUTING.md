@@ -1,6 +1,6 @@
-# Contributing to DataWhiz MSME Analytics MVP
+# Contributing to PiRhoAI MSME Analytics MVP
 
-Thank you for your interest in contributing to DataWhiz! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to PiRhoAI! This document provides guidelines and information for contributors.
 
 ## 🚀 Ways to Contribute
 
@@ -34,8 +34,8 @@ This project follows a code of conduct to ensure a welcoming environment for all
 
 ```bash
 # Clone the repository
-git clone https://github.com/dataaispark-spec/DataWhiz.git
-cd DataWhiz
+git clone https://github.com/dataaispark-spec/PiRhoAI.git
+cd PiRhoAI
 
 # Install dependencies
 pip install -r requirements.txt
@@ -83,7 +83,7 @@ For Streamlit app testing, launch locally and verify functionality.
 
 ## 🔒 Security
 
-- Report security vulnerabilities via issues@datawhiz.ai
+- Report security vulnerabilities via issues@pirhoai.ai
 - Never commit sensitive information (API keys, passwords, etc.)
 - Use environment variables for configuration
 
@@ -93,4 +93,4 @@ For Streamlit app testing, launch locally and verify functionality.
 - Discussions: GitHub Discussions
 - General Questions: Create an issue with "question" label
 
-Thank you for contributing to DataWhiz! 🎉
+Thank you for contributing to PiRhoAI! 🎉
