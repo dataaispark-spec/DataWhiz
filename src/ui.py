@@ -391,6 +391,26 @@ def render_chat_ui():
                 else:
                     st.warning("Please upload a file or provide a Drive link")
 
+            st.markdown("---")
+            st.header("🚀 Quick Start")
+
+            if st.button("Load Sample Data", type="secondary", help="Load synthetic business data to explore PiRhoAI features"):
+                try:
+                    import pandas as pd
+                    df = pd.read_csv("sample_data.csv")
+                    result = st.session_state.rag.load_csv(df=df)
+                    st.success(f"Sample data loaded: {result}")
+                    st.session_state.data_loaded = True
+
+                    # Initialize LLM if needed
+                    if st.session_state.llm is None:
+                        with st.spinner("Loading AI model..."):
+                            st.session_state.llm = LLMHandler(st.session_state.model_choice)
+
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Error loading sample data: {str(e)}")
+
             if st.session_state.data_loaded:
                 st.subheader("Data Preview")
                 preview = st.session_state.rag.get_preview()
