@@ -45,7 +45,7 @@ except ImportError:
             return {"type": "None", "optimized_for": "Not available", "features": ["None"]}
 
 def render_chat_ui():
-    st.set_page_config(page_title="MSME Analytics", page_icon="📊", layout="wide")
+    st.set_page_config(page_title="PiRhoAI", page_icon="📊", layout="wide")
 
     st.markdown("""
     <style>
@@ -118,7 +118,7 @@ def render_chat_ui():
     </style>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div class="main-header"><h1>📊 MSME Analytics MVP</h1><p>Transform your business data into actionable insights with AI-powered natural language Q&A</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header"><h1>📊 PiRhoAI - Privacy Focused AI Business Analytics Assistant</h1><p>Transform your business data into actionable insights with AI-powered natural language Q&A</p></div>', unsafe_allow_html=True)
 
     # Initialize session state
     if "rag" not in st.session_state:
@@ -435,7 +435,7 @@ def render_chat_ui():
 
         # Main chat interface
     if not st.session_state.data_loaded:
-        st.info("👋 Upload some data first to start chatting with your MSME analytics!")
+        st.info("👋 Upload some data first to start chatting with PiRhoAI!")
         return
 
     st.header("💬 Ask Questions About Your Data")
