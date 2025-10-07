@@ -16,16 +16,17 @@ Live Demo: [https://pirhoai.streamlit.app/](https://pirhoai.streamlit.app/)
 - **📁 Data Integration**: Upload local CSV/Excel files or import from Google Drive sharing links
 - **🤖 AI-Powered Q&A**: Natural language queries supported (English & हिंदी)
 - **🔍 Smart Analysis**: Retrieval-Augmented Generation for accurate, context-aware responses
-- **📊 Data Preview**: Real-time visual preview of uploaded datasets
-- **⚙️ Multi-Model Support**: Switch between different AI models (Phi4, Phi3, Grok4)
+- **📊 Data Preview**: Real-time visual preview with auto-loaded sample business data
+- **⚙️ Multi-Model Support**: Switch between local models (Phi-4, Phi-3) or cloud API (Grok-4) for optimal performance
+- **🔄 Auto Setup**: Sample data loads automatically on first run for immediate exploration
 
 ### 🚀 Revolutionary Edge AI Technology
-- **📱 Phone-as-GPU Processor**: Harness your smartphone's power to process entire business datasets locally
-- **🧠 Tiny LLMs for Full Analytics**: Complete business intelligence using compact AI models (3B-7B parameters) that run offline
-- **🔒 Privacy-Focused Architecture**: 100% private data processing - your business sensitive information never leaves your device
-- **🤖 AI Assistant with Agents**: Intelligent workflows and custom agents tailored for MSME business operations
-- **⚡ Offline-First Design**: No internet required for core analytics functions
-- **💰 Zero Cloud Costs**: All processing happens locally on your existing devices
+- **📱 Cloud-First with Local Fallback**: API-based AI (Grok-4) for fast responses, local models when offline or hardware allows
+- **🧠 Tiny LLMs for Full Analytics**: Complete business intelligence using compact models (3B parameters) with CPU compatibility
+- **🔒 Privacy & Performance Balance**: API mode for sensitive data (no local storage), local models for offline privacy
+- **🤖 AI Assistant with Agents**: Intelligent workflows adapting to your business patterns
+- **⚡ Smart Model Selection**: Automatic CPU/GPU detection with appropriate quantization (8-bit GPU, float32 CPU)
+- **💰 Flexible Costs**: Free tier API usage, or zero-cost local processing
 
 ## 📋 Requirements Validation
 
@@ -80,9 +81,15 @@ Democratizing data analytics for MSMEs by enabling natural language queries with
    pip install -r requirements_basic.txt    # Basic functionality only
    ```
 
-3. **Run the application:**
+3. **Set environment variables (optional, for API models):**
    ```bash
-   streamlit run main.py  # Updated from src/main.py for better packaging
+   export XAI_API_KEY="your-xai-api-key-here"  # For Grok-4 API access (free tier available)
+   # Local models work without API key, startup may take longer
+   ```
+
+4. **Run the application:**
+   ```bash
+   streamlit run main.py  # Default configuration with API-based AI for fast startup
    ```
 
 ### 📊 Data Preparation
@@ -148,8 +155,11 @@ vercel --prod
 
 - **Setup Time**: Under 5 minutes
 - **Data Processing**: Instantaneous for <1GB datasets
-- **AI Response Time**: <3 seconds for cached queries
-- **Serverless Scaling**: Automatically handles load with Cloud functions
+- **AI Response Time**:
+  - API Mode (Grok-4): <3 seconds (requires internet)
+  - Local Mode (Phi-3.5): <30 seconds first load, <5 seconds cached (CPU-compatible)
+- **Memory Usage**: ~2GB max (local models), <1GB API mode
+- **Platform Compatibility**: macOS, Windows, Linux with automatic CPU/GPU detection
 
 ## 🛡️ Privacy & Security
 
