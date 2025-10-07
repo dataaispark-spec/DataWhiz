@@ -130,9 +130,28 @@ def render_chat_ui():
     if "data_loaded" not in st.session_state:
         st.session_state.data_loaded = False
     if "model_choice" not in st.session_state:
-        st.session_state.model_choice = "phi4"
+        st.session_state.model_choice = "grok4"
     if "language" not in st.session_state:
         st.session_state.language = "en"
+    if "auto_loaded" not in st.session_state:
+        st.session_state.auto_loaded = False
+
+    # Auto-load sample data on first run
+    if not st.session_state.auto_loaded:
+        if not st.session_state.data_loaded:
+            try:
+                df = pd.read_csv("sample_data.csv")
+                result = st.session_state.rag.load_csv(df=df)
+                st.success(f"Auto-loaded sample data: {result}")
+                st.session_state.data_loaded = True
+                if st.session_state.llm is None:
+                    with st.spinner("Loading AI model..."):
+                        st.session_state.llm = LLMHandler(st.session_state.model_choice)
+                st.session_state.auto_loaded = True
+                st.rerun()
+            except Exception as e:
+                st.error(f"Failed to auto-load sample data: {e}")
+                st.session_state.auto_loaded = True  # Don't retry on error
 
     # Tabs for navigation
     tab1, tab2 = st.tabs(["🚀 Analytics", "ℹ️ About"])
@@ -459,6 +478,16 @@ def render_chat_ui():
         return
 
     st.header("💬 Ask Questions About Your Data")
+
+    # Data status and preview
+    if st.session_state.data_loaded:
+        col1, col2 = st.columns(2)
+        with col1:
+            st.success("✅ Data loaded and ready! You can now ask questions about your sample business data.")
+        with col2:
+            with st.expander("Data Preview", expanded=False):
+                preview = st.session_state.rag.get_preview()
+                st.code(preview, language='text')
 
     # Langfuse feedback collection
     if st.button("Rate This Session ⭐"):
